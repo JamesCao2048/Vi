@@ -5,7 +5,7 @@ handler = (req, res) => {
   if(type === 'video') {
     data = [
       {
-        title: '用户上传',
+        title: 'User Uploaded',
         type: 'video',
         items: [
           {
@@ -31,7 +31,7 @@ handler = (req, res) => {
         ]
       },
       {
-        title: '热门',
+        title: 'Defaults',
         type: 'video',
         items: [
           {
@@ -45,69 +45,69 @@ handler = (req, res) => {
             frameCount: 150
           }
         ]
-      },
-      {
-        title: '搞笑片段',
-        type: 'video',
-        items: [
-          {
-            name: 'video_4',
-            format: 'mp4',
-            cover: '/image/video/video_4.png',
-            width: 650,
-            height: 652,
-            frameCount: 150,
-            fps: 30,
-            source: '/video/video_4.mp4'
-          }
-        ]
       }
+      // {
+      //   title: '搞笑片段',
+      //   type: 'video',
+      //   items: [
+      //     {
+      //       name: 'video_4',
+      //       format: 'mp4',
+      //       cover: '/image/video/video_4.png',
+      //       width: 650,
+      //       height: 652,
+      //       frameCount: 150,
+      //       fps: 30,
+      //       source: '/video/video_4.mp4'
+      //     }
+      //   ]
+      // }
     ]
   }else if(type === 'audio') {
     data = [
       {
-        title: '抖音',
+        title: 'uploaded',
         type: 'audio',
         items: [
           {
             cover: '/image/audio/audio_0.png',
             time: 25000,
             format: 'mp3',
-            name: '测试音频1',
+            name: 'test1',
             source: '/audio/audio_0.mp3'
           },
           {
             cover: '/image/audio/audio_1.png',
             time: 16000,
             format: 'mp3',
-            name: '测试音频2',
+            name: 'test2',
             source: '/audio/audio_1.mp3'
           },
           {
             cover: '/image/audio/audio_2.png',
             time: 41000,
             format: 'mp3',
-            name: '测试音频3',
+            name: 'tests',
             source: '/audio/audio_2.mp3'
           }
         ]
       },
       {
-        title: '卡点',
+        title: 'Defaults',
         type: 'audio',
         items: [
           {
             cover: '/image/audio/audio_3.png',
             time: 14000,
             format: 'mp3',
-            name: '测试音频4',
+            name: 'test4',
             source: '/audio/audio_3.mp3'
           },
           {
             cover: '/image/audio/audio_4.png',
             time: 25000,
             format: 'mp3',
-            name: '测试音频5',
+            name: 'test5',
             source: '/audio/audio_4.mp3'
           }
         ]
@@ -116,56 +116,56 @@ handler = (req, res) => {
   }else if(type === 'text') {
     data = [
       {
-        title: '热门',
+        title: 'Defaults',
         type: 'text',
         items: [
           {
-            name: '文字1',
+            name: 'text1',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: '文字2',
+            name: 'text2',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: '文字3',
+            name: 'text3',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: '文字4',
+            name: 'text4',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: '文字5',
+            name: 'text5',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: '文字6',
+            name: 'text6',
             templateId: 1,
             cover: '/image/text/text_1.png'
           },
           {
-            name: '文字7',
+            name: 'text7',
             templateId: 1,
             cover: '/image/text/text_1.png'
           },
           {
-            name: '文字8',
+            name: 'text8',
             templateId: 1,
             cover: '/image/text/text_1.png'
           },
           {
-            name: '文字9',
+            name: 'text9',
             templateId: 1,
             cover: '/image/text/text_1.png'
           },
           {
-            name: '文字10',
+            name: 'text10',
             templateId: 1,
             cover: '/image/text/text_1.png'
           }

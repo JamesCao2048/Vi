@@ -5,14 +5,14 @@ export const Options = {
         mappingFormItem('Tabs', {
             children: [
                 mappingFormItem('TabPane', {
-                    name: '属性',
+                    name: 'Properties',
                     children: [
                         mappingFormItem('Collapse', {
                             children: [
                                 mappingFormItem('CollapsePane', {
-                                    name: '位置',
+                                    name: 'Position',
                                     children: [
-                                        mappingFormItem('Flex', { attr: { col: 2 }, name: '位置', children: [
+                                        mappingFormItem('Flex', { attr: { col: 2 }, name: 'Position', children: [
                                                 mappingFormItem('Number', { attr: {
                                                         controlsPosition: 'right'
                                                     }, name: 'x', mappingKey: 'left', defaultValue: 0 }),
@@ -24,7 +24,7 @@ export const Options = {
                                                 min: 1,
                                                 max: 200,
                                                 step: 1
-                                            }, name: '缩放', mappingKey: 'scale', defaultValue: 100, label: '%' })
+                                            }, name: 'Scale', mappingKey: 'scale', defaultValue: 100, label: '%' })
                                     ]
                                 })
                             ]
@@ -32,9 +32,9 @@ export const Options = {
                         mappingFormItem('Collapse', {
                             children: [
                                 mappingFormItem('CollapsePane', {
-                                    name: '基础',
+                                    name: 'Base',
                                     children: [
-                                        mappingFormItem('Boolean', { name: '静音', mappingKey: 'silent', defaultValue: false })
+                                        mappingFormItem('Boolean', { name: 'Mute', mappingKey: 'silent', defaultValue: false })
                                     ]
                                 })
                             ]
@@ -42,7 +42,7 @@ export const Options = {
                     ]
                 }),
                 mappingFormItem('TabPane', {
-                    name: '动画',
+                    name: 'animations',
                     children: []
                 })
             ]

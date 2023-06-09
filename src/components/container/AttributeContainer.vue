@@ -12,7 +12,7 @@
     />
     <div v-show="selectTrackOptionsConfig.length === 0" class="w-full h-full flex flex-col justify-center items-center">
       <AttrEmptyIcon />
-      <span class="text-sm">点击轨道进行编辑</span>
+      <span class="text-sm">Click the track start edit</span>
     </div>
     <div v-if="selectTrackOptionsConfig.length > 0" class="absolute top-0 left-3 right-2 bottom-0 overflow-hidden">
       <AttrContainer :attrData="selectTrackOptionsConfig" :trackId="trackStore.selectResource?.id" />

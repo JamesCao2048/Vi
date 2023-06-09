@@ -24,7 +24,7 @@ const menuData: MenuItem[] = [
     title: 'Image',
     key: 'image',
     icon: 'ImageIcon'
-  },
+  }
   // {
   //   title: '特效',
   //   key: 'effect',

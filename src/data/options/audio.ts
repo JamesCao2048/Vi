@@ -5,24 +5,17 @@ export const Options = {
         mappingFormItem('Tabs', {
             children: [
                 mappingFormItem('TabPane', {
-                    name: '属性',
+                    name: 'Properties',
                     children: [
                         mappingFormItem('Collapse', {
-                            children: [
-                                mappingFormItem('CollapsePane', {
-                                    name: '基础',
-                                    children: [
-                                        mappingFormItem('Boolean', { name: '静音', mappingKey: 'silent', defaultValue: false })
-                                    ]
-                                })
-                            ]
+                            children: [mappingFormItem('Boolean', { name: 'Mute', mappingKey: 'silent', defaultValue: false })]
                         })
                     ]
-                }),
-                mappingFormItem('TabPane', {
-                    name: '动画',
-                    children: []
                 })
+                // mappingFormItem('TabPane', {
+                //     name: '动画',
+                //     children: []
+                // })
             ]
         })
     ]
