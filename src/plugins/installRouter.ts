@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
+
 const routes: Array<RouteRecordRaw> = [];
 interface Moudle {
   default: RouteRecordRaw

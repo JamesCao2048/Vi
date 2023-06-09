@@ -300,6 +300,8 @@ class FFManager {
     }
     // 获取波形
     getWavePng(sourceName: string) {
+        let name = this.getFileUrl(this.pathConfig.wavePath, sourceName, 'png');
+        // console.log("namenamenamename",name, this.pathConfig.wavePath, sourceName)
         return this.getFileUrl(this.pathConfig.wavePath, sourceName, 'png');
     }
     // 获取音频
