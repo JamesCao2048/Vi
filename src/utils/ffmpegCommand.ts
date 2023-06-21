@@ -6,7 +6,7 @@ export class Command { // 命令封装
         const audioPath = Command.genVideoAAC(path, videoName);
         const videoPath = `${path}${videoName}.${format}`;
         return {
-            commands: ['-v', 'quiet', '-i', videoPath, '-acodec', 'copy', '-vn', audioPath],
+            commands: ['-v', 'quiet', '-i', videoPath, '-vn', '-c:a', 'aac', audioPath],
             videoPath,
             audioPath,
             audioName: Command.genVideoAAC('', videoName)
@@ -76,7 +76,7 @@ export class Command { // 命令封装
     genWave(audioPath: string, videoName: string, wavePath: string, frameCount: number) {
         const fileName = `${videoName}.png`;
         return {
-            commands: ['-i', audioPath, '-filter_complex', `aformat=channel_layouts=mono,compand,showwavespic=s=${frameCount * 5}x32:colors=yellow`, '-frames:v', '1', `${wavePath}${fileName}`],
+            commands: ['-i', audioPath, '-filter_complex', `aformat=channel_layouts=mono,compand,showwavespic=s=${frameCount * 5}x32:colors=cornflowerblue`, '-frames:v', '1', `${wavePath}${fileName}`],
             fileName
         };
     }

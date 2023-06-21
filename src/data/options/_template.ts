@@ -85,7 +85,7 @@ export const Options = {
                     ]
                 }),
                 mappingFormItem('TabPane', {
-                    name: '动画',
+                    name: 'animation',
                     children: []
                 })
             ]

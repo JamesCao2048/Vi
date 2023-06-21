@@ -151,11 +151,13 @@ class FFManager {
     // 获取文件buffer
     getFileBuffer(filePath: string, fileName: string, format: string) {
         const localPath = `${fileName}.${format}`;
+        // console.log('localPath',localPath)
         return this.ffmpeg.FS('readFile', `${filePath}${localPath}`);
     }
     // 获取文件Blob
     getFileBlob(filePath: string, fileName: string, format: string) {
         const fileBuffer = this.getFileBuffer(filePath, fileName, format);
+        // console.log("fileBuffer",fileBuffer)
         return new Blob([fileBuffer], { type: FileTypeMap[format as keyof typeof FileTypeMap] });
     }
     /**
@@ -163,6 +165,7 @@ class FFManager {
      * */
     getFileUrl(filePath: string, fileName: string, format: string) {
         const fileBlob = this.getFileBlob(filePath, fileName, format);
+        // console.log("fileBlob",fileBlob)
         return window.URL.createObjectURL(fileBlob);
     }
     /**

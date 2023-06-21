@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     Canvas: typeof import('./src/components/Canvas.vue')['default']
     CanvasPlayer: typeof import('./src/components/container/CanvasPlayer.vue')['default']
     ColorPicker: typeof import('./src/components/item/formItem/color/ColorPicker.vue')['default']
+    copy: typeof import('./src/components/item/resourcesItem/AudioItem copy.vue')['default']
     DeleteIcon: typeof import('./src/components/icons/DeleteIcon.vue')['default']
     EffectItem: typeof import('./src/components/item/trackItem/template/EffectItem.vue')['default']
     EffectsIcon: typeof import('./src/components/icons/EffectsIcon.vue')['default']
@@ -69,7 +70,7 @@ declare module '@vue/runtime-core' {
     SubIcon: typeof import('./src/components/icons/SubIcon.vue')['default']
     SubList: typeof import('./src/components/SubList.vue')['default']
     TextIcon: typeof import('./src/components/icons/TextIcon.vue')['default']
-    TextItem: typeof import('./src/components/item/trackItem/template/TextItem.vue')['default']
+    TextItem: typeof import('./src/components/item/resourcesItem/TextItem.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     TimeLine: typeof import('./src/components/item/trackItem/TimeLine.vue')['default']
     TrackContainer: typeof import('./src/components/container/TrackContainer.vue')['default']
@@ -90,5 +91,8 @@ declare module '@vue/runtime-core' {
     VideoIcon: typeof import('./src/components/icons/VideoIcon.vue')['default']
     VideoItem: typeof import('./src/components/item/trackItem/template/VideoItem.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

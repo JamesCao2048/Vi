@@ -17,7 +17,9 @@
           top: `${item.t}px`,
           width: `${item.w}px`,
           height: `${item.h}px`,
-          transform: `scale(${item.scale}, ${item.scale})`
+          transform: `scale(${item.scale}, ${item.scale})`,
+          fontFamily: `${item.name}!impottant`
+          
         }"
         class="move-target absolute"
         @click.stop="selectItem(item.id)"
@@ -62,8 +64,8 @@
       return [];
     }
     const { width, height } = props.canvasSize;
-    const videoTargets:Array<{ id: string, l: number, t: number, w: number, h:number, scale:number }> = [];
-    const targets:Array<{ id: string, l: number, t: number, w: number, h:number, scale:number }> = [];
+    const videoTargets:Array<{ id: string, l: number, t: number, w: number, h:number, scale:number, name?:string }> = [];
+    const targets:Array<{ id: string, l: number, t: number, w: number, h:number, scale:number, name:string }> = [];
     store.playTargetTrackMap.forEach((trackItem, id) => {
       if (!attrStore.trackAttrMap[id]) return;
       let { left = 0, top = 0, scale = 100 } = attrStore.trackAttrMap[id];
@@ -92,7 +94,8 @@
           l: left,
           t: top,
           w: defaultW,
-          h: defaultH
+          h: defaultH,
+          name: trackItem.name
         });
       }
     });
@@ -158,4 +161,40 @@
   body .cc-move .moveable-line{
     @apply bg-yellow-400 w-px;
   }
+  @font-face {
+  font-family: 'Always Good';
+  src: url('/font/Always Good/Always Good.ttf');
+}
+@font-face {
+  font-family: 'big-price';
+  src: url('/font/big-price/BigPriceDemoRegularttf');
+}
+@font-face {
+  font-family: 'chunkfive';
+  src: url('/font/chunkfive/Chunk Five Print.otf');
+}
+@font-face {
+  font-family: 'lato';
+  src: url('/font/lato/Lato-Black.ttf');
+}
+@font-face {
+  font-family: 'Lobster';
+  src: url('/font/Lobster/Lobster_1.3.otf');
+}
+@font-face {
+  font-family: 'oakland';
+  src: url('/font/oakland/Oakland Free.ttf');
+}
+@font-face {
+  font-family: 'pacifico';
+  src: url('/font/pacifico/Pacifico.ttf');
+}
+@font-face {
+  font-family: 'roboto';
+  src: url('/font/roboto/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: 'Sunlit Memories';
+  src: url('/font/Sunlit Memories/Sunlit Memories.ttf');
+}
 </style>

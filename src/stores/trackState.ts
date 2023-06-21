@@ -2,7 +2,9 @@ import { ref, watchEffect, reactive, computed } from 'vue';
 import { defineStore } from 'pinia';
 import { checkTrackListOverlap } from '@/utils/storeUtil';
 import { useTrackAttrState } from '@/stores/trackAttribute';
+
 import { getJsonParse } from '@/utils/common';
+import { putEditTrack } from '@/api/project';
 
 export type TrackType = 'video' | 'audio' | 'text' | 'image' | 'effect' | 'transition' | 'filter';
 interface BaseTractItem {
@@ -22,7 +24,9 @@ export interface VideoTractItem extends BaseTractItem{
   cover: string,
   width: number,
   height: number,
-  fps: number
+  fps: number,
+  sourceStart:number, // source start
+  sourceEnd: number, // source end 
 }
 
 export interface AudioTractItem extends BaseTractItem{
@@ -214,11 +218,33 @@ export const useTrackState = defineStore('trackState', () => {
     attrStore.initTrackAttr(item.id);
   }
 
+  function addItemToTrack(playStartFrame:any) {
+    console.log('playStartFrame', playStartFrame);
+ 
+    let line = selectTrackItem.line;
+    let index = selectTrackItem.index;
+    // console.log('list')
+    let item = trackList[line].list[index];
+    console.log('item', item);
+    let newItem:any = { ...item };
+    item.offsetR = item.end - playStartFrame;
+    item.end = playStartFrame;
+    console.log(newItem);
+    trackList[line].list[index] = item;
+    newItem.offsetL = playStartFrame - item.start;
+    newItem.start = playStartFrame;
+    trackList[line].list.splice(index + 1, 0, newItem);
+   
+    console.log('123231x', trackList[line]?.list, '123231x', selectTrackItem.line, selectTrackItem.index);
+  }
+
   watchEffect(() => {
     localStorage.trackS = trackScale.value;
   });
   watchEffect(() => {
     localStorage.trackList = JSON.stringify(trackList);
+    console.log('2222222');
+    putEditTrack({ pid: '01H23DZTQN7088HGD2WM2X0QPR', aid: '01H23EZPXK28Q3X3VGTPH7G0N2', data: JSON.stringify(trackList) });
   });
   return {
     moveTrackData,
@@ -229,6 +255,7 @@ export const useTrackState = defineStore('trackState', () => {
     addTrack,
     selectTrackById,
     removeTrack,
-    dragData
+    dragData,
+    addItemToTrack
   };
 });

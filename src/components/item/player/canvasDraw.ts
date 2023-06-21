@@ -45,13 +45,13 @@ export class CanvasPlayer {
         this.playerContext = this.player.value.getContext('2d');
         this.renderContext = this.renderPlayer.getContext('2d');
         if (this.renderContext) {
-            this.renderContext.font = this.getFont();
+            this.renderContext.font = this.getFont(14, '');
             this.renderContext.textBaseline = this.textOptions.textBaseline;
             this.renderContext.textAlign = this.textOptions.textAlign;
         }
     }
-    getFont(size = 14) {
-        return `${size}px -apple-system, ".SFNSText-Regular", "SF UI Text", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", "WenQuanYi Zen Hei", "Microsoft YaHei", Arial, sans-serif`;
+    getFont(size = 14, name:any) {
+        return `${size}px ${name}, -apple-system, ".SFNSText-Regular", "SF UI Text", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", "WenQuanYi Zen Hei", "Microsoft YaHei", Arial, sans-serif`;
     }
     initWatch() {
         onMounted(() => {
@@ -140,7 +140,8 @@ export class CanvasPlayer {
             } else if (type === 'text') {
                 let { text, color, fontSize } = this.attrStore.trackAttrMap[id];
                 if (this.renderContext) {
-                    this.renderContext.font = this.getFont(fontSize);
+                    // console.log("trackItem",trackItem)
+                    this.renderContext.font = this.getFont(fontSize, trackItem.name);
                     this.renderContext.fillStyle = `rgba(${color.r},${color.g},${color.b},${color.a})`;
                     this.renderContext.fillText(text, drawL, drawT + fontSize);
                 }

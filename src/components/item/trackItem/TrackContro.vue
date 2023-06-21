@@ -28,6 +28,7 @@
 <script setup lang="ts">
   import { usePageState } from '@/stores/pageState';
   import { useTrackState } from '@/stores/trackState';
+  import { usePlayerState } from '@/stores/playerState';
   import { ref, reactive, computed } from 'vue';
   const props = defineProps({
     modelValue: {
@@ -50,6 +51,7 @@
   });
   const store = usePageState();
   const trackStore = useTrackState();
+  const playerStore = usePlayerState();
   const statePoint = computed(() => store._stepInfo.statePoint);
   const stateLength = computed(() => store._stepInfo.stateLength);
   const svgStyle = ref({
@@ -72,22 +74,22 @@
   }
   const icons = computed(() => [
     {
-      title: '撤销',
+      title: 'redraw',
       disable: stateLength.value === 0 || statePoint.value === 0,
       icon: 'UndoIcon'
     },
     {
-      title: '前进',
+      title: 'forward',
       disable: statePoint.value === stateLength.value,
       icon: 'RedoIcon'
     },
     {
-      title: '分割',
-      disable: true,
+      title: 'split',
+      disable: trackStore.selectTrackItem.line === -1 && trackStore.selectTrackItem.index === -1,
       icon: 'SplitIcon'
     },
     {
-      title: '删除',
+      title: 'delete',
       disable: trackStore.selectTrackItem.line === -1 && trackStore.selectTrackItem.index === -1,
       icon: 'DeleteIcon'
     }
@@ -108,6 +110,10 @@
       store._undo();
     } else if (type === 'RedoIcon') {
       store._redo();
+    } else if (type === 'SplitIcon') {
+      console.log(trackStore.selectTrackItem);
+      
+      trackStore.addItemToTrack(playerStore.playStartFrame);
     }
   }
 </script>

@@ -8,7 +8,7 @@
         <ElIcon :size="size" :color="color" class="mr-1">
           <Download />
         </ElIcon>
-        导出
+        Export
       </ElButton>
       <el-switch
         class="mr-10"

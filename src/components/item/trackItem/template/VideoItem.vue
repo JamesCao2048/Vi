@@ -61,15 +61,19 @@
     if (name && source && ffmpeg.isLoaded.value) {
       const videoName = `${name}.${format}`;
       // 写文件
-      await ffmpeg.writeFile(ffmpeg.pathConfig.resourcePath, videoName, source);
+      await ffmpeg.writeFile(ffmpeg.pathConfig.resourcePath, videoName, source); 
       // 分离音频
+     
       await ffmpeg.splitAudio(name, format);
       // 视频抽帧
+     
       await ffmpeg.genFrame(name, format, {
         w: width,
         h: height
       });
+      console.log('genWave...', name);
       await ffmpeg.genWave(name, frameCount);
+      console.log('genWave finished...', name);
       waveFileUrl.value = ffmpeg.getWavePng(name);
       loading.value = false;
       store.ingLoadingCount--;

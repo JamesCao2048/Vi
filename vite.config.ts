@@ -47,5 +47,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       pages: path.resolve(__dirname, './src/pages')
     }
+  },
+  server: {
+    proxy: {
+      // 使用正则表达式匹配需要代理的路径
+      '/api': {
+        target: 'http://16.162.117.255:3003',
+        changeOrigin: true, // 需要虚拟主机站点
+        rewrite: urlpath => urlpath.replace(/^\/api/, '') // 重写路径：移除路径中的 /api
+      }
+    }
   }
 });

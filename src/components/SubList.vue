@@ -11,6 +11,9 @@
         <template v-if="isAudio">
           <AudioItem :data="item" :type="type" />
         </template>
+        <template v-else-if="isText">
+          <TextItem :data="item" :type="type" />
+        </template>
         <template v-else>
           <OtherResource :data="item" :type="type" />
         </template>
@@ -23,6 +26,7 @@
   import { ref, computed } from 'vue';
   import AudioItem from '@/components/item/resourcesItem/AudioItem.vue';
   import OtherResource from '@/components/item/resourcesItem/OtherResource.vue';
+  import TextItem from '@/components/item/resourcesItem/TextItem.vue';
   const props = defineProps({
     listData: {
       type: Object,
@@ -40,4 +44,5 @@
   });
   const listData = ref(props.listData);
   const isAudio = computed(() => props.type === 'audio');
+  const isText = computed(() => props.type === 'text');
 </script>

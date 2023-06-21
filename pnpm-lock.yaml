@@ -17,6 +17,9 @@ dependencies:
   element-plus:
     specifier: ^2.2.29
     version: registry.npmmirror.com/element-plus@2.2.29(vue@3.2.47)
+  js-cookie:
+    specifier: ^3.0.5
+    version: 3.0.5
   lodash-es:
     specifier: ^4.17.21
     version: registry.npmmirror.com/lodash-es@4.17.21
@@ -357,6 +360,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
 
   /source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
@@ -3633,12 +3640,6 @@ packages:
       nopt: registry.npmmirror.com/nopt@6.0.0
     dev: true
 
-  registry.npmmirror.com/js-cookie@3.0.1:
-    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/js-cookie/-/js-cookie-3.0.1.tgz}
-    name: js-cookie
-    version: 3.0.1
-    engines: {node: '>=12'}
-
   registry.npmmirror.com/js-sdsl@4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/js-sdsl/-/js-sdsl-4.3.0.tgz}
     name: js-sdsl
@@ -6241,7 +6242,7 @@ packages:
     dependencies:
       '@types/js-cookie': registry.npmmirror.com/@types/js-cookie@3.0.2
       intersection-observer: registry.npmmirror.com/intersection-observer@0.12.2
-      js-cookie: registry.npmmirror.com/js-cookie@3.0.1
+      js-cookie: 3.0.5
       lodash: registry.npmmirror.com/lodash@4.17.21
       marked: registry.npmmirror.com/marked@4.2.12
       qs: registry.npmmirror.com/qs@6.11.0

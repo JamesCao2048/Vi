@@ -1,21 +1,24 @@
 import axios from 'axios';
+import { getToken, getTokenType } from '@/utils/auth';
 import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import errorCode from '@/data/errorCode';
 import { Constant } from '@/data/constant';
 
 // 初始化超时时间
 const axiosInstance = axios.create({
+  // baseURL: 'http://16.162.117.255:3003/', // 注意斜杠结尾
   timeout: 30000
 });
 // 请求拦截，补充 accessToken
 axiosInstance.interceptors.request.use(
   config => {
-    const accessToken = sessionStorage.getItem(Constant.TokenKey);
-    const userId = sessionStorage.getItem(Constant.Uid);
+    const accessToken = getToken();
+    // const userId = sessionStorage.getItem(Constant.Uid);
     if (accessToken) {
       Object.assign(config.headers, {
-        token: accessToken ? `${accessToken}` : '',
-        uid: userId ? `${userId}` : ''
+        // token: accessToken ? `${accessToken}` : '',
+        // uid: userId ? `${userId}` : '',
+        Authorization: `${getTokenType()} ${getToken()}`
       });
     }
     return config;
@@ -51,12 +54,12 @@ const handleResponseError = (error: AxiosError) => {
  * @param response
  * @returns {Promise<never>}
  */
-const handleResponseSuccess = (response: AxiosResponse) => {
-  const res = response.data;
-  if (res?.status === 200) {
-    return Promise.resolve(res.data);
+const handleResponseSuccess = (response: any) => {
+  // const res = response;
+  if (response?.status === 200) {
+    return Promise.resolve(response.data);
   } else {
-    return Promise.reject(res);
+    return Promise.reject(response);
   }
 };
 
@@ -72,8 +75,8 @@ const request = <ResponseType = unknown>(url: string, options?: AxiosRequestConf
       url,
       ...options
     })
-      .then(res => {
-        resolve(res.data);
+      .then((res:any) => {
+        resolve(res);
       })
       .catch(err => reject(err));
   });

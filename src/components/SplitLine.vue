@@ -100,6 +100,7 @@
     if (props.disabled) {
       return;
     }
+    // console.log("123231")
     const { left, top } = lineElement.value.getBoundingClientRect();
     positionState.left = parseInt(left);
     positionState.top = parseInt(top);

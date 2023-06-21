@@ -73,6 +73,7 @@
   import type { VideoTractItem } from '@/stores/trackState';
   import { debounce } from 'lodash-es';
   import { formatTime, isVideo, getJsonParse } from '@/utils/common';
+  import { getEditTrack } from '@/api/project';
   const store = useTrackState();
   const playerStore = usePlayerState();
   const trackList = ref();
@@ -98,6 +99,8 @@
   }); // 是否是音视频节点
   const dragPoint = computed(() => store.dragData.dragPoint);
   let mainIndex = ref(0); // main 行下标
+
+  // const TrackList = await getEditTrack({pid: '01H23DZTQN7088HGD2WM2X0QPR'})
 
   const showTrackList = computed(() => {
     return store.trackList.map((line, lineIndex) => {

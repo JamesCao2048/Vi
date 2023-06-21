@@ -8,25 +8,35 @@ handler = (req, res) => {
         title: 'User Uploaded',
         type: 'video',
         items: [
+          // {
+          //   name: 'video_1',
+          //   format: 'mp4',
+          //   cover: '/image/video/video_1.png',
+          //   source: '/video/video_1.mp4',
+          //   width: 1232,
+          //   height: 720,
+          //   fps: 30,
+          //   frameCount: 712
+          // },
+          // {
+          //   name: 'video_2',
+          //   format: 'mp4',
+          //   cover: '/image/video/video_2.png',
+          //   source: '/video/video_2.mp4',
+          //   width: 1242,
+          //   height: 652,
+          //   fps: 30,
+          //   frameCount: 150
+          // },
           {
-            name: 'video_1',
+            name: 'online',
             format: 'mp4',
-            cover: '/image/video/video_1.png',
-            source: '/video/video_1.mp4',
-            width: 1232,
-            height: 720,
-            fps: 30,
-            frameCount: 712
-          },
-          {
-            name: 'video_2',
-            format: 'mp4',
-            cover: '/image/video/video_2.png',
-            source: '/video/video_2.mp4',
+            cover: '/image/video/online.png',
+            source: 'https://d3vmn69xbio3op.cloudfront.net/01H13G26H70FA5F49Y3JCD1W3T/01H13G26H7WY9122FR6X5RMQ3Q/2/01H236GZPNVN2NFT82CMC27Y2S.mp4',
             width: 1242,
             height: 652,
-            fps: 30,
-            frameCount: 150
+            fps: 25,
+            frameCount: 342
           },
         ]
       },
@@ -120,52 +130,47 @@ handler = (req, res) => {
         type: 'text',
         items: [
           {
-            name: 'text1',
+            name: 'Always Good',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: 'text2',
+            name: 'big-price',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: 'text3',
+            name: 'chunkfive',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: 'text4',
+            name: 'lato',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: 'text5',
+            name: 'Lobster',
             templateId: 0,
             cover: '/image/text/text_0.png'
           },
           {
-            name: 'text6',
+            name: 'oakland',
             templateId: 1,
             cover: '/image/text/text_1.png'
           },
           {
-            name: 'text7',
+            name: 'pacifico',
             templateId: 1,
             cover: '/image/text/text_1.png'
           },
           {
-            name: 'text8',
+            name: 'roboto',
             templateId: 1,
             cover: '/image/text/text_1.png'
           },
           {
-            name: 'text9',
-            templateId: 1,
-            cover: '/image/text/text_1.png'
-          },
-          {
-            name: 'text10',
+            name: 'Sunlit Memories',
             templateId: 1,
             cover: '/image/text/text_1.png'
           }
@@ -175,7 +180,7 @@ handler = (req, res) => {
   }else if(type === 'image') {
     data = [
       {
-        title: '热门',
+        title: 'face uoloaded',
         type: 'image',
         items: [
           {
@@ -226,7 +231,7 @@ handler = (req, res) => {
         ]
       },
       {
-        title: '经典',
+        title: 'face defaults',
         type: 'image',
         items: [
           {
