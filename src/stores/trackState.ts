@@ -16,6 +16,7 @@ interface BaseTractItem {
   frameCount: number,
   offsetL: number, // 音视频左侧裁切
   offsetR: number, // 音视频右侧裁切
+  aid:string,
 }
 export interface VideoTractItem extends BaseTractItem{
   time: number,
@@ -37,8 +38,9 @@ export interface AudioTractItem extends BaseTractItem{
 }
 
 export interface TextTractItem extends BaseTractItem{
-  cover: string,
-  templateId: number
+  // cover: string,
+  fontfamily: string,
+  attr:any
 }
 
 export interface ImageTractItem extends BaseTractItem{
@@ -243,7 +245,7 @@ export const useTrackState = defineStore('trackState', () => {
   });
   watchEffect(() => {
     localStorage.trackList = JSON.stringify(trackList);
-    console.log('2222222');
+    
     putEditTrack({ pid: '01H23DZTQN7088HGD2WM2X0QPR', aid: '01H23EZPXK28Q3X3VGTPH7G0N2', data: JSON.stringify(trackList) });
   });
   return {
