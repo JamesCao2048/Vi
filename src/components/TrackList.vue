@@ -100,8 +100,6 @@
   const dragPoint = computed(() => store.dragData.dragPoint);
   let mainIndex = ref(0); // main 行下标
 
-  // const TrackList = await getEditTrack({pid: '01H23DZTQN7088HGD2WM2X0QPR'})
-
   const showTrackList = computed(() => {
     return store.trackList.map((line, lineIndex) => {
       line.main && (mainIndex.value = lineIndex);

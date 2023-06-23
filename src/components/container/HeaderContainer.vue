@@ -4,7 +4,7 @@
       {{ store.pageTitle }}
     </h2>
     <div class="flex w-1/3 flex-row-reverse pr-10 items-center">
-      <ElButton color="#626aef" disabled>
+      <ElButton color="#626aef">
         <ElIcon :size="size" :color="color" class="mr-1">
           <Download />
         </ElIcon>
@@ -36,4 +36,5 @@
     '--el-switch-border-color': store.isDark ? '#4B5563' : '#D1D5DB',
     '--el-color-white': store.isDark ? '#F3F4F6' : '#374151'
   }));
+  // TODO export
 </script>

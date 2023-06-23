@@ -77,8 +77,10 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
         name: item.user_given_name,
         format: item.format,
         time: 3000,
-        cover: props.activeKey === 'image' ? `https://${item.s3_path}` : '/image/audio/audio_0.png',
+        // TODO
+        cover: props.activeKey === 'image' ? `https://${item.s3_path}` : (props.activeKey === 'video' ? `https://${item.cover_image_path}` : '/image/audio/audio_0.png'),
         source: `https://${item.s3_path}`,
+        // TODO
         width: 1242,
         height: 652,
         fps: 25,
