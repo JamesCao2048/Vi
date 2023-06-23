@@ -4,7 +4,7 @@ import { axiosInstance } from '@/plugins/installAxios';
 //   return axiosInstance.get(`/api/assets/system_asset?asset_type=${params.asset_type}&operation_type=${params.operation_type}`);
 // }
 export async function getProjectInfo(params: any) {
-    const response = await axiosInstance.get(`/api/projects/01H23DZTQN7088HGD2WM2X0QPR`);
+    const response = await axiosInstance.get(`/api/projects/${params.pid}`);
     return response; // 返回响应的数据
 }
 

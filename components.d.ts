@@ -16,7 +16,7 @@ declare module '@vue/runtime-core' {
     Canvas: typeof import('./src/components/Canvas.vue')['default']
     CanvasPlayer: typeof import('./src/components/container/CanvasPlayer.vue')['default']
     ColorPicker: typeof import('./src/components/item/formItem/color/ColorPicker.vue')['default']
-    copy: typeof import('./src/components/item/resourcesItem/AudioItem copy.vue')['default']
+    copy: typeof import('./src/components/item/resourcesItem/OtherResource copy.vue')['default']
     DeleteIcon: typeof import('./src/components/icons/DeleteIcon.vue')['default']
     EffectItem: typeof import('./src/components/item/trackItem/template/EffectItem.vue')['default']
     EffectsIcon: typeof import('./src/components/icons/EffectsIcon.vue')['default']

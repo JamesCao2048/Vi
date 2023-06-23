@@ -35,7 +35,7 @@ axiosInstance.interceptors.request.use(
  */
 const handleResponseError = (error: AxiosError) => {
   if (error?.message?.includes?.('timeout')) {
-    console.log('请求超时');
+    console.log('TIME OUT');
   } else if (error?.response?.status === 401) {
     // 状态编码为401，无权限，需要重定向到login页面
   } else if (error?.response?.status === 403) {

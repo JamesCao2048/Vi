@@ -21,12 +21,15 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
 
 <script setup lang="ts">
   import { Fold } from '@element-plus/icons-vue';
-  import { computed, onMounted, ref, watch } from 'vue';
+  import { computed, onMounted, ref, watch, getCurrentInstance } from 'vue';
   import SubList from '@/components/SubList.vue';
   import { getData } from '@/api/mock';
   import { getSystemAssets, getAssetInfo, getAssets } from '@/api/assets';
   import { getProjectInfo } from '@/api/project';
+  import { useRoute } from 'vue-router';
   import { useRequest } from 'vue-hooks-plus';
+  import { systemFontList } from '@/data/source/font';
+
   const props = defineProps({
     activeKey: {
       type: String,
@@ -46,6 +49,12 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
       return newCollapse !== null;
     }
   });
+  const instance:any = getCurrentInstance();
+  const route = instance.appContext.config.globalProperties.$route;
+  const pid = route.query.pid;
+  const aid = route.query.aid;
+  console.log('instance', instance);
+
   function getassetType() {
     if (props.activeKey === 'audio') {
       return 1;
@@ -68,7 +77,7 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
         name: item.user_given_name,
         format: item.format,
         time: 3000,
-        cover: props.activeKey === 'video' ? '/image/video/online.png' : '/image/audio/audio_0.png',
+        cover: props.activeKey === 'image' ? `https://${item.s3_path}` : '/image/audio/audio_0.png',
         source: `https://${item.s3_path}`,
         width: 1242,
         height: 652,
@@ -76,16 +85,13 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
         frameCount: 342
       };
     });
+    console.log('formatData', formatData);
     return formatData;
   }
   const fetchData = async() => {
     loading.value = true;
     let systemAssetsResponse: any = await getSystemAssets({ assetType: getassetType(), operationType: 1 });
-
-    console.log('systemAssetsResponse', systemAssetsResponse);
-
-    const projectInfo: any = await getProjectInfo({});
-    const sourceasset: any = await getAssetInfo({ aid: projectInfo?.one_click_option.input_video_id });
+    const sourceasset: any = await getAssetInfo({ aid });
 
     sourceVideo.value = handleData([sourceasset]);
 
@@ -93,10 +99,7 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
     assets.value = handleData(assetsresponse);
 
     systemAssets.value = handleData(systemAssetsResponse);
-    console.log(sourceVideo, systemAssets);
-    // setTimeout(()=>{
-    //   loading.value = false
-    // },1000)
+    // console.log(sourceVideo, systemAssets);
     loading.value = false;
 
   // assets.value = assetsResponse.data;
@@ -127,14 +130,7 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
         {
           title: 'uploaded',
           type: props.activeKey,
-          
-          items: [{
-            cover: '/image/audio/audio_0.png',
-            time: 25000,
-            format: 'mp3',
-            name: 'test1',
-            source: '/audio/audio_0.mp3'
-          }]
+          items: assets
         }, {
           title: 'system default',
           type: props.activeKey,
@@ -145,58 +141,14 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
         {
           title: 'system default',
           type: props.activeKey,
-          items: [{
-                    name: 'Always Good',
-                    fontfamily: 'Always Good',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'big-price',
-                    fontfamily: 'big-price',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'chunkfive',
-                    fontfamily: 'chunkfive',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'lato',
-                    fontfamily: 'lato',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'Lobster',
-                    fontfamily: 'Lobster',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'oakland',
-                    fontfamily: 'oakland',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'pacifico',
-                    fontfamily: 'pacifico',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'roboto',
-                    fontfamily: 'roboto',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  },
-                  {
-                    name: 'Sunlit Memories',
-                    fontfamily: 'Sunlit Memories',
-                    attr: { color: '#fff', fontSize: 40, left: 385.5, scale: 100, text: 'abc', top: 341 }
-                  }]
+          items: systemFontList
         }];
     } else {
       return [
         {
           title: 'uploaded',
           type: props.activeKey,
-          items: []
+          items: assets
         }, {
           title: 'system default',
           type: props.activeKey,
