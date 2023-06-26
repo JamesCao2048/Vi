@@ -6,12 +6,6 @@ import { useTrackAttrState } from '@/stores/trackAttribute';
 import { getJsonParse } from '@/utils/common';
 import { putEditTrack } from '@/api/project';
 
-const instance:any = getCurrentInstance();
-const route = instance.appContext.config.globalProperties.$route;
-const pid = route.query.pid;
-const aid = route.query.aid;
-console.log('instance', instance);
-
 export type TrackType = 'video' | 'audio' | 'text' | 'image' | 'effect' | 'transition' | 'filter';
 interface BaseTractItem {
   id: string,
@@ -250,6 +244,10 @@ export const useTrackState = defineStore('trackState', () => {
     localStorage.trackS = trackScale.value;
   });
   watchEffect(() => {
+    let params = new URLSearchParams(window.location.search);
+    const aid = params.get('aid');
+    const pid = params.get('pid');
+
     localStorage.trackList = JSON.stringify(trackList);
     let putData = {
       pid, aid, data: JSON.stringify(trackList)

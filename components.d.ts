@@ -52,7 +52,7 @@ declare module '@vue/runtime-core' {
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     ImageIcon: typeof import('./src/components/icons/ImageIcon.vue')['default']
-    ImageItem: typeof import('./src/components/item/trackItem/template/ImageItem.vue')['default']
+    ImageItem: typeof import('./src/components/item/resourcesItem/ImageItem.vue')['default']
     ItemList: typeof import('./src/components/ItemList.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     MenuList: typeof import('./src/components/MenuList.vue')['default']
