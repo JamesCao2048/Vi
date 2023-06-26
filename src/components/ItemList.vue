@@ -53,7 +53,6 @@ class="flex flex-col transition-all duration-200 overflow-x-hidden border-r dark
   const route = instance.appContext.config.globalProperties.$route;
   const pid = route.query.pid;
   const aid = route.query.aid;
-  console.log('instance', instance);
 
   function getassetType() {
     if (props.activeKey === 'audio') {

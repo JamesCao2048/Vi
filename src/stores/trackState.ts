@@ -1,10 +1,16 @@
-import { ref, watchEffect, reactive, computed } from 'vue';
+import { ref, watchEffect, reactive, computed, getCurrentInstance } from 'vue';
 import { defineStore } from 'pinia';
 import { checkTrackListOverlap } from '@/utils/storeUtil';
 import { useTrackAttrState } from '@/stores/trackAttribute';
 
 import { getJsonParse } from '@/utils/common';
 import { putEditTrack } from '@/api/project';
+
+const instance:any = getCurrentInstance();
+const route = instance.appContext.config.globalProperties.$route;
+const pid = route.query.pid;
+const aid = route.query.aid;
+console.log('instance', instance);
 
 export type TrackType = 'video' | 'audio' | 'text' | 'image' | 'effect' | 'transition' | 'filter';
 interface BaseTractItem {
@@ -245,8 +251,11 @@ export const useTrackState = defineStore('trackState', () => {
   });
   watchEffect(() => {
     localStorage.trackList = JSON.stringify(trackList);
+    let putData = {
+      pid, aid, data: JSON.stringify(trackList)
+    };
     
-    putEditTrack({ pid: '01H23DZTQN7088HGD2WM2X0QPR', aid: '01H23EZPXK28Q3X3VGTPH7G0N2', data: JSON.stringify(trackList) });
+    putEditTrack(putData);
   });
   return {
     moveTrackData,
