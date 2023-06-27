@@ -254,13 +254,14 @@ export const useTrackState = defineStore('trackState', () => {
     const aid = params.get('aid');
     const pid = params.get('pid');
     console.log('effect');
-
     localStorage.trackList = JSON.stringify(trackList);
-    let putData = {
-      pid, aid, data: JSON.stringify(trackList)
-    };
-    
-    putEditTrack(putData);
+    setTimeout(() => {
+      console.log('puttt');
+      let putData = {
+        pid, aid, data: JSON.stringify(trackList)
+      };
+      putEditTrack(putData);
+    }, 3000);
   });
   return {
     moveTrackData,

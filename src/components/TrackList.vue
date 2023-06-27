@@ -67,7 +67,7 @@
   import TrackPlayPoint from '@/components/item/trackItem/TrackPlayPoint.vue';
   import { getGridPixel, getSelectFrame } from '@/utils/canvasUtil';
   import { formatTrackItemData } from '@/utils/storeUtil';
-  import { ref, computed, onMounted } from 'vue';
+  import { ref, computed, onBeforeMount } from 'vue';
   import { useTrackState } from '@/stores/trackState';
   import { usePlayerState } from '@/stores/playerState';
   import type { VideoTractItem } from '@/stores/trackState';
@@ -206,7 +206,7 @@
     });
   }
 
-  onMounted(() => {
+  onBeforeMount(() => {
     initTrack();
   });
 </script>
