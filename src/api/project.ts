@@ -9,7 +9,7 @@ export async function getProjectInfo(params: any) {
 }
 
 export async function getEditTrack(params: any) {
-    const response = await axiosInstance.get(`/api/projects/${params.pid}/oneclick/options/varains`);
+    const response = await axiosInstance.get(`/api/projects/${params.pid}/oneclick/variants`);
     return response; // 返回响应的数据
 }
 export async function putEditTrack(params:any) {

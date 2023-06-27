@@ -67,13 +67,13 @@
   import TrackPlayPoint from '@/components/item/trackItem/TrackPlayPoint.vue';
   import { getGridPixel, getSelectFrame } from '@/utils/canvasUtil';
   import { formatTrackItemData } from '@/utils/storeUtil';
-  import { ref, computed } from 'vue';
+  import { ref, computed, onMounted } from 'vue';
   import { useTrackState } from '@/stores/trackState';
   import { usePlayerState } from '@/stores/playerState';
   import type { VideoTractItem } from '@/stores/trackState';
   import { debounce } from 'lodash-es';
   import { formatTime, isVideo, getJsonParse } from '@/utils/common';
-  import { getEditTrack } from '@/api/project';
+  import { getAssetInfo } from '@/api/assets';
   const store = useTrackState();
   const playerStore = usePlayerState();
   const trackList = ref();
@@ -118,6 +118,7 @@
       };
     });
   });
+
   function setSelectTract(event:Event, line: number, index: number) {
     event.preventDefault();
     event.stopPropagation();
@@ -192,4 +193,20 @@
     dropLineIndex.value = -1;
     dropItemLeft.value = 0;
   }
+  function initTrack() {
+    let params = new URLSearchParams(window.location.search);
+    const aid = params.get('aid');
+    // const pid = params.get('pid');
+    getAssetInfo({ aid }).then((res:any) => {
+      if (res.edit_track) {
+        let initTrackList = JSON.parse(res.edit_track);
+        console.log('trackList', initTrackList);
+        store.initTrackList(initTrackList);
+      }
+    });
+  }
+
+  onMounted(() => {
+    initTrack();
+  });
 </script>

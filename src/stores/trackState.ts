@@ -240,6 +240,12 @@ export const useTrackState = defineStore('trackState', () => {
     console.log('123231x', trackList[line]?.list, '123231x', selectTrackItem.line, selectTrackItem.index);
   }
 
+  function initTrackList(list:any) {
+    console.log('inininiit', list);
+    // trackList = list
+    trackList.splice(0, trackList.length, ...list);
+  }
+
   watchEffect(() => {
     localStorage.trackS = trackScale.value;
   });
@@ -247,6 +253,7 @@ export const useTrackState = defineStore('trackState', () => {
     let params = new URLSearchParams(window.location.search);
     const aid = params.get('aid');
     const pid = params.get('pid');
+    console.log('effect');
 
     localStorage.trackList = JSON.stringify(trackList);
     let putData = {
@@ -265,6 +272,7 @@ export const useTrackState = defineStore('trackState', () => {
     selectTrackById,
     removeTrack,
     dragData,
-    addItemToTrack
+    addItemToTrack,
+    initTrackList
   };
 });
