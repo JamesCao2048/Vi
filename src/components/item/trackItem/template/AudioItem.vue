@@ -5,7 +5,14 @@
       <span class="mr-4 shrink-0">{{ `${trackItem.name}.${trackItem.format}` }}</span>
     </div>
     <div class="overflow-hidden bg-blue-900 bg-opacity-60 flex-1 relative">
-      <img :src="waveFileUrl" v-show="waveFileUrl" class="absolute left-0 right-0 top-0 bottom-0 h-full min-w-full" :style="waveStyle" alt="">
+      <img 
+        :src="waveFileUrl" 
+        v-show="waveFileUrl" 
+        class="absolute left-0 right-0 top-0 bottom-0 h-full min-w-full" 
+        :style="waveStyle" 
+        alt="" 
+        crossorigin="anonymous"
+      >
     </div>
     <Loading v-show="loading" class="pl-12 bg-opacity-70" />
   </div>

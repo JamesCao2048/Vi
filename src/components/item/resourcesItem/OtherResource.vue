@@ -11,6 +11,7 @@
       :src="formatData.cover"
       @mousemove="showGif($event, formatData.source)"
       @mouseout="showGif($event, formatData.cover)"
+      crossorigin="anonymous"
     >
     <label class="mt-1 mb-3 text-xs w-full text-center select-none dark:text-gray-400 text-gray-600" v-show="showData.showName">{{ formatData.name }}</label>
     <span class="h-5 absolute bottom-1 right-2 text-xs text-gray-400" v-show="showData.showTime">{{ formatTime(formatData.time).str }}</span>
