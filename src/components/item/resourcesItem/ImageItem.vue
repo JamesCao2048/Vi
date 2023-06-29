@@ -8,6 +8,7 @@
       class=" cursor-pointer w-full h-24 block select-none dark:hover:border-cyan-800 hover:border-cyan-200 box-border"
       :class="type === 'video' ? 'w-34 border-2 dark:border-gray-800 border-gray-50' : 'w-22 border dark:border-gray-700 border-gray-200'"
       :src="`https://${formatData.s3_path}`"
+      crossorigin="anonymous"
     >
     <!-- <img src="https://d3vmn69xbio3op.cloudfront.net/01H13G26H70FA5F49Y3JCD1W3T/01H13G26H7WY9122FR6X5RMQ3Q/3/01H236FG618YM27P65Y623JTVB.jpg"/> -->
     <label class="mt-1 mb-3 text-xs w-full text-center select-none dark:text-gray-400 text-gray-600" v-show="showData.showName">{{ formatData.name }}</label>

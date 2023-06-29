@@ -4,7 +4,7 @@
       draggable="true"
       @dragstart="dragStart"
   >
-    <img class="w-20 h-20 rounded" :src="data.cover">
+    <img class="w-20 h-20 rounded" :src="data.cover" crossorigin="anonymous">
     <div class="flex-1 flex flex-col">
       <p class="max-h-10 overflow-clip text-sm flex-1 pl-3 mt-2">{{ data.name }}</p>
       <span class="text-sm h-5 pl-3 mt-1"> {{ formatTime(data.time).str }} </span>
